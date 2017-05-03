@@ -1,0 +1,70 @@
+
+{% extends '::layout/layout.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        
+               {{ dump(factures)}}
+        <div class="span3">
+           {% include '::ModelUsed/navigation.html.twig' %} 
+
+        </div>
+        
+        <div class="span9">
+            
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="alert alert-success">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+
+            
+            {% for flashMessage in app.session.flashbag.get('error') %}
+                <div class="alert alert-errors">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+            
+            
+            <h2>Valider mon panier</h2>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Références</th>
+                        <th>Date</th>
+                        <th>Prix unitaire</th>
+                        <th> Une copie </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if factures|length == 0 %}
+                        <tr>
+                            <td colspan="4"><center>Aucun articles dans votre panier</center></td>
+                        </tr>
+                    {% endif %}
+                    
+                    {% for facture in factures %}
+                    <tr>
+                        <form >
+                            <td>{{facture.idFacture}}</td>
+                            <td>
+                                {{facture.Date }}
+                            </td>
+                            <td>{{facture.PrixFacture }} €</td>
+                            <td>  <a href="{{ path('supprimer', { 'id' : facture.idFacture }) }}"><i class="icon-refresh"></i></a> </td>
+                        </form>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+           
+
+
+                                        <br />
+                                        <br />
+                                        <br />
+										<a  href="{{ path('generatePDF') }}"  class="btn btn-primary">Facture Actuelle</a>
+    </div>
+</div>
+{% endblock %}

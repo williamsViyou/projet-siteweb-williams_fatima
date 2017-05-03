@@ -1,0 +1,81 @@
+
+
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+
+
+
+<div class="container">
+    <div class="row">	
+        <div class="span3"> {% include '::ModelUsed/navigation.html.twig' %} </div>
+                  
+             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+               <div class="span3"> {% include '::ModelUsed/utilisateurConnecter.html.twig' %}  </div>
+            {% else %}
+               <div class="span3"> {% include '::ModelUsed/utilisateur.html.twig' %} </div>
+            {% endif %} 
+            
+
+        <div class="span9">
+
+            <ul class="thumbnails">
+          {% if produits|length != 0 %}
+               {% for produit in produits %}
+                  <li class="span3">
+                    <div class="thumbnail">
+                       
+           
+
+                          {% for m in medias %}
+                            {% if produit.image == m.id %}
+                                <img src="{{ m.path }}" alt="WebSItePro" width="300" height="250">                        
+                            {% endif %}
+                          {% endfor %}
+                        <div class="caption">
+                            <h4>{{ produit.nom }}</h4>
+                             {% set var = produit.description|split('')%}
+                           
+                        <p>{{ produit.description|length == 50 }}</p>
+                         {% for t in Tva %}
+                            {% if produit.tva == t.id %}
+                                   <h4>{{ produit.prix|tva(t.multiplicate) }} €</h4>
+                            {% endif %}
+                          {% endfor %}
+
+                            <a class="btn btn-primary" href="{{ path('presentation', { 'id' : produit.id }) }}">Plus d'infos</a>
+                            <a class="btn btn-success" href="{{ path('ajouter', { 'id' : produit.id }) }}">Ajouter au panier</a>
+                        </div>
+                    </div>
+                </li>
+            
+            
+                {% endfor %}
+                
+            </ul>
+
+          
+
+            <div class="pagination">
+                <ul>
+                    <li class="disabled"><span>Précédent</span></li>
+                    <li class="disabled"><span>1</span></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">Suivant</a></li>
+                </ul>
+            </div>
+
+            {% else %}
+             <li class="span3">
+                    
+                        
+            Désolé, ce produit n'existe plus dans nos stocks.
+                     
+            </li> 
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+pages:
+    path:     /page/{num_page}
+    defaults: { _controller: PagesPagesBundle:Page:page }
+
+about:
+    path:     /about/{num_page}
+    defaults: { _controller: PagesPagesBundle:Page:page }

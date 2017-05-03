@@ -1,0 +1,27 @@
+panier:
+    path:     /panier
+    defaults: { _controller: EcommerceEcommerceBundle:Panier:panier }
+livraison:
+    path:     /panier/livraison
+    defaults: { _controller: EcommerceEcommerceBundle:Panier:livraison }
+validation:
+    path:     /panier/validation
+    defaults: { _controller: EcommerceEcommerceBundle:Panier:validation }
+supprimer:
+    path:  /supprimer/{id}
+    defaults: { _controller: EcommerceEcommerceBundle:Panier:supprimer }
+ajouter:
+    path:  /addProduct/{id}
+    defaults: { _controller: EcommerceEcommerceBundle:Panier:ajouteProduit}
+ajouterPlus:
+    path:  /addProduct2/{id}
+    defaults: { _controller: EcommerceEcommerceBundle:Panier:ajouteProduit2}
+linker:
+    path:  /linke/{mavar}
+    defaults: { _controller: EcommerceEcommerceBundle:Panier:linked }
+payement:
+    path:  /finalisation/{montant}
+    defaults: { _controller: EcommerceEcommerceBundle:Panier:payer}
+generatePDF:
+    path:  /facture_pdf
+    defaults: { _controller: EcommerceEcommerceBundle:Panier:generatePDF}
