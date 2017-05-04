@@ -2,11 +2,7 @@
 video
 traduction langue 
 il manque des moto dans la categorie automobile
-
-
-
-
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
                 <a href="{{ path('fos_user_security_logout') }}">
                     {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
@@ -33,3 +29,13 @@ il manque des moto dans la categorie automobile
 
 
     securiser les routes des adresses car on peux s'y connecter sans identifaication 
+
+
+
+ INSERT INTO `data_adrs` ( `Adresse livraison`, `Adresse facturation`, `idFacture`, `Prix`, `livre`) VALUES ( 'af', 'b', '12', '1555', '0')
+
+
+SELECT * FROM data_adrs d where d.idFacture = 1 
+
+
+INSERT INTO `data` (`iddata`, `idUser`, `idProduit`, `quantite`, `_data_adrre`) VALUES (NULL, '6', '9', '2', '1');
