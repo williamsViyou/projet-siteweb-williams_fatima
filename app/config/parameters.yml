@@ -1,0 +1,18 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: 3306
+    database_name: ecommerce-symfony3
+    database_user: root
+    database_password: ''
+    mailer_transport: smtp
+    mailer_encryption: ssl
+    mailer_host: smtp.gmail.com
+    mailer_user: williamsviyou97@gmail.com
+    mailer_password: 17maiwilliams
+    secret: ods842fsf5592b8452166qqdsd147
+twig:
+    globals:
+        telephone: '07 52 94 06 01'
+        fax: '02 95 63 98 71'
+        adresse: 'Paris 95 000 -16 rue De Lafolie'
